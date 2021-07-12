@@ -1,7 +1,10 @@
-import React from 'react'
 import Head from 'next/head'
+import React, { useEffect, useState } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
+
+import Title from 'features/Title'
 import useFetch from 'hooks/useFetch'
+import timeFormatter from 'utils/timeFormatter'
 
 const COLOUR_API_URL =
   'http://www.colourlovers.com/api/palettes/new?format=json'
@@ -20,15 +23,21 @@ const Wrapper = styled.div`
 `
 
 export default function Home() {
+  const [time, setTime] = useState(timeFormatter(new Date()))
   const { data, loading } = useFetch(COLOUR_API_URL)
-  console.log({ data, loading })
+
+  useEffect(() => {
+    setTime(timeFormatter(new Date()))
+  }, [data])
   return (
     <>
       <Head>
         <title>ColourLover</title>
       </Head>
       <GlobalStyle />
-      <Wrapper></Wrapper>
+      <Wrapper>
+        <Title time={time} />
+      </Wrapper>
     </>
   )
 }
