@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import Loader from 'components/Loader'
 import Row from 'components/Row'
 import Text from 'components/Text'
+import { ApiColorType } from 'types'
 import timeFormatter from 'utils/timeFormatter'
 
 const Wrapper = styled.div`
@@ -97,24 +98,6 @@ const Colours = ({ data, loading }: PropType) => (
 type PropType = {
   data?: Array<ApiColorType>
   loading: boolean
-}
-
-type ApiColorType = {
-  apiUrl: string
-  badgeUrl: string
-  colors: Array<string>
-  dateCreated: Date
-  description: string
-  id: number
-  imageUrl: string
-  numComments: number
-  numHearts: number
-  numViews: number
-  numVotes: number
-  rank: number
-  title: string
-  url: string
-  userName: string
 }
 
 export default Colours

@@ -1,11 +1,14 @@
+import { GetServerSideProps } from 'next'
 import Head from 'next/head'
+import fetch from 'node-fetch'
 import React, { useEffect, useState } from 'react'
 import styled, { createGlobalStyle } from 'styled-components'
 
+import Colours from 'features/Colours'
 import Title from 'features/Title'
 import useFetch from 'hooks/useFetch'
+import { ApiColorType } from 'types'
 import timeFormatter from 'utils/timeFormatter'
-import Colours from 'features/Colours'
 
 const COLOUR_API_URL =
   'http://www.colourlovers.com/api/palettes/new?format=json'
@@ -55,13 +58,14 @@ const Wrapper = styled.div`
   height: 100vh;
 `
 
-export default function Home() {
+export default function Home({ ssData }: PropTypes) {
   const [time, setTime] = useState(timeFormatter(new Date()))
   const { data, loading } = useFetch(COLOUR_API_URL, TIMER)
 
   useEffect(() => {
     setTime(timeFormatter(new Date()))
   }, [data])
+
   return (
     <>
       <Head>
@@ -70,8 +74,25 @@ export default function Home() {
       <GlobalStyle />
       <Wrapper>
         <Title time={time} />
-        <Colours data={data} loading={loading} />
+        <Colours data={data || ssData} loading={loading} />
       </Wrapper>
     </>
   )
+}
+
+type PropTypes = {
+  ssData: Array<ApiColorType>
+}
+
+export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+  try {
+    const response = await fetch(COLOUR_API_URL)
+    // this response is coming back with a 403. I think the issue is with the response header
+    const ssData = await response.json()
+
+    return { props: { ssData } }
+  } catch (e) {
+    res.statusCode = 404
+    return { props: {} }
+  }
 }
