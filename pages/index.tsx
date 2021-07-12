@@ -29,7 +29,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: 700;
     margin: 8px 0;
   }
-  
+
   a{
     color: white;
     text-decoration: none;
@@ -62,7 +62,7 @@ export default function Home() {
       <GlobalStyle />
       <Wrapper>
         <Title time={time} />
-        <Colours data={data} />
+        <Colours data={data} loading={loading} />
       </Wrapper>
     </>
   )

@@ -2,8 +2,9 @@ import Image from 'next/image'
 import React from 'react'
 import styled from 'styled-components'
 
-import Text from 'components/Text'
+import Loader from 'components/Loader'
 import Row from 'components/Row'
+import Text from 'components/Text'
 import timeFormatter from 'utils/timeFormatter'
 
 const Wrapper = styled.div`
@@ -83,12 +84,13 @@ const ColourRender = (data: Array<ApiColorType>) =>
     )
   )
 
-const Colours = ({ data }: PropType) => (
-  <Wrapper>{data && ColourRender(data)}</Wrapper>
+const Colours = ({ data, loading }: PropType) => (
+  <Wrapper>{loading ? <Loader /> : data && ColourRender(data)}</Wrapper>
 )
 
 type PropType = {
   data?: Array<ApiColorType>
+  loading: boolean
 }
 
 type ApiColorType = {
