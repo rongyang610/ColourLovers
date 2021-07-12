@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import Row from 'component/Row'
-import Text from 'component/Text'
+import Row from 'components/Row'
+import Text from 'components/Text'
 
 const Wrapper = styled.div`
   display: flex;

@@ -5,6 +5,7 @@ import styled, { createGlobalStyle } from 'styled-components'
 import Title from 'features/Title'
 import useFetch from 'hooks/useFetch'
 import timeFormatter from 'utils/timeFormatter'
+import Colours from 'features/Colours'
 
 const COLOUR_API_URL =
   'http://www.colourlovers.com/api/palettes/new?format=json'
@@ -21,6 +22,22 @@ const GlobalStyle = createGlobalStyle`
     font-size: 64px;
     font-weight: 700;
     margin: 16px 0;
+  }
+
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 8px 0;
+  }
+  
+  a{
+    color: white;
+    text-decoration: none;
+
+    &:hover {
+      color: white;
+      cursor: pointer;
+    }
   }
 `
 const Wrapper = styled.div`
@@ -45,6 +62,7 @@ export default function Home() {
       <GlobalStyle />
       <Wrapper>
         <Title time={time} />
+        <Colours data={data} />
       </Wrapper>
     </>
   )
