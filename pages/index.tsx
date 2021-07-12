@@ -39,12 +39,19 @@ const GlobalStyle = createGlobalStyle`
       cursor: pointer;
     }
   }
+
+  @media (max-width: 768px) {
+    h1{
+      font-size: 48px;
+    }
+  }
 `
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 20px;
+  height: 100vh;
 `
 
 export default function Home() {

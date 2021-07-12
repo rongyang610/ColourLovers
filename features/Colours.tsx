@@ -17,6 +17,10 @@ const Wrapper = styled.div`
 const Container = styled(Row)`
   padding: 10px;
   max-width: 460px;
+
+  @media (max-width: 480px) {
+    max-width: 310px;
+  }
 `
 const TextContainer = styled.div`
   display: flex;

@@ -9,16 +9,31 @@ const Wrapper = styled.div`
   flex-direction: column;
   margin-bottom: 16px;
   width: 100%;
+
+  @media (max-width: 768px) {
+    flex-direction: column-reverse;
+  }
 `
 
 const Header = styled.h1`
   font-weight: ${({ $weight }: HeaderProps) => ($weight ? $weight : 700)};
   margin: 0;
+
+  @media (max-width: 768px) {
+    & > span {
+      font-size: 48px;
+    }
+  }
 `
 
 const TimerRow = styled(Row)`
   justify-content: flex-end;
   margin-bottom: 8px;
+
+  @media (max-width: 768px) {
+    justify-content: flex-start;
+    margin: 4px 0 0;
+  }
 `
 
 const Title = ({ time }: TitleProps) => {
