@@ -16,10 +16,18 @@ const GlobalStyle = createGlobalStyle`
     color: white;
     font-size: 16px;
   }
+
+  h1 {
+    font-size: 64px;
+    font-weight: 700;
+    margin: 16px 0;
+  }
 `
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding: 20px;
 `
 
 export default function Home() {
