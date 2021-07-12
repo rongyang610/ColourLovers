@@ -1,3 +1,21 @@
 {
-  "extends": ["next", "next/core-web-vitals"]
+  "parser": "@typescript-eslint/parser",
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:typescript-sort-keys/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["simple-import-sort", "sort-destructure-keys", "sort-keys-fix"],
+  "rules": {
+    "sort-destructure-keys/sort-destructure-keys": 2,
+    "sort-keys": [
+      "error",
+      "asc",
+      { "caseSensitive": true, "natural": false, "minKeys": 2 }
+    ],
+    "sort-keys-fix/sort-keys-fix": "warn"
+  }
 }
