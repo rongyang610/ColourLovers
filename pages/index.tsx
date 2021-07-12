@@ -1,6 +1,10 @@
 import React from 'react'
 import Head from 'next/head'
 import styled, { createGlobalStyle } from 'styled-components'
+import useFetch from 'hooks/useFetch'
+
+const COLOUR_API_URL =
+  'http://www.colourlovers.com/api/palettes/new?format=json'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -16,6 +20,8 @@ const Wrapper = styled.div`
 `
 
 export default function Home() {
+  const { data, loading } = useFetch(COLOUR_API_URL)
+  console.log({ data, loading })
   return (
     <>
       <Head>
