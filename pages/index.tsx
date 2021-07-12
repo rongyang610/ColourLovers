@@ -9,6 +9,7 @@ import Colours from 'features/Colours'
 
 const COLOUR_API_URL =
   'http://www.colourlovers.com/api/palettes/new?format=json'
+const TIMER = 60000
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -56,7 +57,7 @@ const Wrapper = styled.div`
 
 export default function Home() {
   const [time, setTime] = useState(timeFormatter(new Date()))
-  const { data, loading } = useFetch(COLOUR_API_URL)
+  const { data, loading } = useFetch(COLOUR_API_URL, TIMER)
 
   useEffect(() => {
     setTime(timeFormatter(new Date()))
