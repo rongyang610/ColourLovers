@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 `
 const Container = styled(Row)`
   padding: 10px;
-  max-width: 580px;
+  max-width: 460px;
 `
 const TextContainer = styled.div`
   display: flex;
@@ -34,7 +34,7 @@ const CustomLink = styled.a`
 `
 const ViewsContainer = styled(Row)`
   background-color: #1d76ae;
-  border-radius: 4px;
+  border-radius: 2px;
   margin-top: 8px;
   padding: 8px 4px;
   width: fit-content;
@@ -59,23 +59,25 @@ const ColourRender = (data: Array<ApiColorType>) =>
       <Container key={id}>
         <CustomLink href={url} target="_blank">
           <Row>
-            <Header>{title}</Header>
-            <Text>
-              by {userName} at {timeFormatter(dateCreated)}
-            </Text>
-            <Row>
-              <Text $size="12px" $weight={700}>
-                {numViews} views
+            <TextContainer>
+              <Header>{title}</Header>
+              <Text>
+                by {userName} at {timeFormatter(dateCreated)}
               </Text>
-              <Text $size="12px" $weight={700}>
-                {numVotes} votes
-              </Text>
-            </Row>
+              <ViewsContainer>
+                <Text $size="12px" $weight={700}>
+                  {numViews} views
+                </Text>
+                <Text $size="12px" $weight={700}>
+                  {numVotes} votes
+                </Text>
+              </ViewsContainer>
+            </TextContainer>
             <Image
               alt={title}
               height="100"
               src={imageUrl}
-              width="250"
+              width="180"
               layout="fixed"
             />
           </Row>
