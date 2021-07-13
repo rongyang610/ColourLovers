@@ -15,6 +15,9 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Additional Download
+Due to the API `http://www.colourlovers.com/api/palettes/new?format=json` not having `Access-Control-Allow-Origin` in it's header, we need to bypass the CORS error when fetching the API. To do this we would need to download the extension [Moesif Origin & CORS Changer](https://chrome.google.com/webstore/detail/moesif-origin-cors-change/digfbfaphojjndkpccljibejjbppifbc?hl=en-US).
+
 ## Technologies
 
 - [React](https://reactjs.org/docs/getting-started.html)
