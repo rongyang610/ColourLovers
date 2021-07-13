@@ -86,10 +86,15 @@ type PropTypes = {
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   try {
-    const response = await fetch(COLOUR_API_URL)
+    const response = await fetch(COLOUR_API_URL, {
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'User-Agent': 'MY-UA-STRING'
+      }
+    })
     // this response is coming back with a 403. I think the issue is with the response header
     const ssData = await response.json()
-
     return { props: { ssData } }
   } catch (e) {
     res.statusCode = 404
