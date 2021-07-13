@@ -58,9 +58,9 @@ const Wrapper = styled.div`
   height: 100vh;
 `
 
-export default function Home({ ssData }: PropTypes) {
+export default function Home({ isLoading, ssData }: PropTypes) {
   const [time, setTime] = useState(timeFormatter(new Date()))
-  const { data, loading } = useFetch(COLOUR_API_URL, TIMER)
+  const { data } = useFetch(COLOUR_API_URL, TIMER, ssData)
 
   useEffect(() => {
     setTime(timeFormatter(new Date()))
@@ -74,30 +74,28 @@ export default function Home({ ssData }: PropTypes) {
       <GlobalStyle />
       <Wrapper>
         <Title time={time} />
-        <Colours data={data || ssData} loading={loading} />
+        <Colours data={data || ssData} isLoading={isLoading} />
       </Wrapper>
     </>
   )
 }
 
 type PropTypes = {
-  ssData: Array<ApiColorType>
+  isLoading?: boolean
+  ssData?: Array<ApiColorType>
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
   try {
     const response = await fetch(COLOUR_API_URL, {
       headers: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-        'User-Agent': 'MY-UA-STRING'
+        'User-Agent': 'ColourLoverLive'
       }
     })
-    // this response is coming back with a 403. I think the issue is with the response header
     const ssData = await response.json()
     return { props: { ssData } }
   } catch (e) {
     res.statusCode = 404
-    return { props: {} }
+    return { props: { isLoading: true } }
   }
 }

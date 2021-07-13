@@ -91,13 +91,13 @@ const ColourRender = (data: Array<ApiColorType>) =>
     )
   )
 
-const Colours = ({ data, loading }: PropType) => (
-  <Wrapper>{loading ? <Loader /> : data && ColourRender(data)}</Wrapper>
+const Colours = ({ data, isLoading }: PropType) => (
+  <Wrapper>{isLoading ? <Loader /> : data && ColourRender(data)}</Wrapper>
 )
 
 type PropType = {
   data?: Array<ApiColorType>
-  loading: boolean
+  isLoading?: boolean
 }
 
 export default Colours
