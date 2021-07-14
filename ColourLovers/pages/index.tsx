@@ -60,7 +60,7 @@ const Wrapper = styled.div`
 
 export default function Home({ isLoading, ssData }: PropTypes) {
   const [time, setTime] = useState(timeFormatter(new Date()))
-  const { data } = useFetch(COLOUR_API_URL, TIMER, ssData)
+  const { data } = useFetch('/api/', TIMER, ssData)
 
   useEffect(() => {
     setTime(timeFormatter(new Date()))
@@ -74,7 +74,7 @@ export default function Home({ isLoading, ssData }: PropTypes) {
       <GlobalStyle />
       <Wrapper>
         <Title time={time} />
-        <Colours data={data || ssData} isLoading={isLoading} />
+        <Colours data={data || ssData} isLoading={isLoading && !data} />
       </Wrapper>
     </>
   )
@@ -86,11 +86,10 @@ type PropTypes = {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
+  console.log('hello')
   try {
     const response = await fetch(COLOUR_API_URL, {
-      headers: {
-        'User-Agent': 'ColourLoverLive'
-      }
+      headers: { 'User-Agent': 'ColourLoversLive' }
     })
     const ssData = await response.json()
     return { props: { ssData } }

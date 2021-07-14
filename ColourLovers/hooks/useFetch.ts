@@ -6,7 +6,9 @@ const useFetch = (url: string, timer?: number, existingData?: any) => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const res = await fetch(url)
+        const res = await fetch(url, {
+          headers: { Authorization: 'a', 'Content-Type': 'application/json' }
+        })
         const jsonRes = await res.json()
         setData({ data: jsonRes })
       } catch (error) {
