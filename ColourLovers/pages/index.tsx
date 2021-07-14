@@ -86,7 +86,6 @@ type PropTypes = {
 }
 
 export const getServerSideProps: GetServerSideProps = async ({ res }) => {
-  console.log('hello')
   try {
     const response = await fetch(COLOUR_API_URL, {
       headers: { 'User-Agent': 'ColourLoversLive' }
