@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { isEmpty, isNil } from 'ramda'
 
 const useFetch = (url: string, timer?: number, existingData?: any) => {
   const [data, setData] = useState({ data: undefined })
@@ -17,7 +18,7 @@ const useFetch = (url: string, timer?: number, existingData?: any) => {
     }
     let intervalId: number
 
-    if (!existingData) {
+    if (isEmpty(existingData) || isNil(existingData)) {
       setData(({ data }) => ({ data }))
     }
 

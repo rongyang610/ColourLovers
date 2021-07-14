@@ -32,6 +32,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 - [Next.js](https://nextjs.org/docs/getting-started)
 - [Styled-components](https://styled-components.com/)
 - [Moment](https://momentjs.com/docs/)
+- [ramda](https://ramdajs.com/)
 - [prettier](https://prettier.io/docs/en/index.html)
 - [eslint](https://eslint.org/docs/user-guide/getting-started)
 ### Backend

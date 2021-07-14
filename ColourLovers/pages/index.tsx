@@ -1,3 +1,4 @@
+import { isEmpty, isNil } from 'ramda'
 import { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import fetch from 'node-fetch'
@@ -74,7 +75,10 @@ export default function Home({ isLoading, ssData }: PropTypes) {
       <GlobalStyle />
       <Wrapper>
         <Title time={time} />
-        <Colours data={data || ssData} isLoading={isLoading && !data} />
+        <Colours
+          data={data || ssData}
+          isLoading={isLoading && (isEmpty(data) || isNil(data))}
+        />
       </Wrapper>
     </>
   )
